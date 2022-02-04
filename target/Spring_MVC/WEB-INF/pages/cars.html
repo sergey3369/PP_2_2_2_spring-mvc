@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <th>Field1</th>
+        <th>Field2</th>
+        <th>Field3</th>
+    </tr>
+    <tr th:each="car : ${cars}">
+        <td th:text="${car.getField1}"></td>
+        <td th:text="${car.getField2}"></td>
+        <td th:text="${car.getField3}"></td>
+    </tr>
+</table>
+</body>
+</html>
