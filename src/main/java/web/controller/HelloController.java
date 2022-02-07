@@ -1,5 +1,6 @@
 package web.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,11 @@ import java.util.List;
 
 @Controller
 public class HelloController {
+	private final Service service ;
+
+	public HelloController(Service service) {
+		this.service = service;
+	}
 
 	@GetMapping(value = "/")
 	public String printWelcome(ModelMap model) {
@@ -26,9 +32,8 @@ public class HelloController {
 		return "index";
 	}
 	@GetMapping(value = "/cars")
-	public String printCars(ModelMap model, @RequestParam String count) {
-		Service service = new ServiceCarsImpl();
-		List<Car> cars = service.getEntity(Integer.parseInt(count));
+	public String printCars(ModelMap model, @RequestParam Integer count) {
+		List<Car> cars = service.getEntity(count);
 		model.addAttribute("cars",cars);
 		return "cars";
 	}

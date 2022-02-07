@@ -1,11 +1,12 @@
 package web.service;
 
+import org.springframework.stereotype.Component;
 import web.model.Car;
 
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
+@Component
 public class ServiceCarsImpl implements Service {
     List<Car> list = Stream.of(
                     new Car("Car", "Car", "Car"),
